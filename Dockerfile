@@ -1,19 +1,17 @@
 # syntax=docker/dockerfile:1
 
-FROM python:3.9.17
-RUN /usr/local/bin/python -m pip install --upgrade pip
+FROM python:alpine
 
-WORKDIR python-docker
-
-RUN groupadd -g 10005 go \
-&& useradd -m -u 10006 -g go go
-USER 10006
+WORKDIR /python-docker
 
 COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
+
 COPY . .
-RUN . venv/bin/activate
-RUN echo "Listing the path"
-RUN ls -al
-RUN pip install -r requirements.txt
+RUN ls
+# Create a new user with UID 10016
+RUN addgroup -g 10016 choreo && \
+    adduser  --disabled-password  --no-create-home --uid 10016 --ingroup choreo choreouser
+USER 10016
 EXPOSE 5000
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+CMD [ "flask", "run", "--host=0.0.0.0"]

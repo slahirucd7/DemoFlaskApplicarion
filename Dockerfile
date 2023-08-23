@@ -11,9 +11,9 @@ USER 10006
 
 COPY requirements.txt requirements.txt
 COPY . .
-EXPOSE 5000
 RUN . venv/bin/activate
 RUN echo "Listing the path"
 RUN ls -al
 RUN pip install -r requirements.txt
+EXPOSE 5000
 CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]

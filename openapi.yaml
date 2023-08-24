@@ -90,19 +90,37 @@ paths:
           description: Successful operation
         "404":
           description: id not found
+    post:
+      tags:
+        - reservations
+      summary: Create reservations providing an id and a payload
+      description: Creates reservation based on the id supplied
+      operationId: CreateReservationById
+      parameters:
+        - name: reservationId
+          in: path
+          description: id of reservation to update
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
+        "404":
+          description: id not found
       requestBody:
         content:
           application/json:
             schema:
               $ref: "#/components/schemas/Status"
-  /healthz:
-    summary: Healthcheck endpoint
-    get:
-      summary: Healthcheck
-      operationId: Healthcheck
-      responses:
-        "200":
-          description: Healthy response
+  # /healthz:
+  #   summary: Healthcheck endpoint
+  #   get:
+  #     summary: Healthcheck
+  #     operationId: Healthcheck
+  #     responses:
+  #       "200":
+  #         description: Healthy response
 
 components:
   schemas:

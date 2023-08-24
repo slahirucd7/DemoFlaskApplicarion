@@ -96,6 +96,11 @@ paths:
           description: Successful operation
         "404":
           description: id not found
+      requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/reservationPayload"
     delete:
       tags:
         - Reservation Management

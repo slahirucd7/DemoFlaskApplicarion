@@ -23,7 +23,7 @@ reservations = [
 ]
 
 # route relevant to the reservation management
-@app.route('/rs/reservation/<int:reservationId>', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@app.route('/rs/reservation/<reservationId>', methods=['GET', 'POST', 'PUT', 'DELETE'])
 def reservation_management(reservationId):
     if request.method == "GET":
         return str("Your reservation details: " + getReservation(reservationId))
@@ -46,11 +46,12 @@ def get_reservations():
 
 # gives a reservation created by the user considering the reservationId
 def getReservation(reservationId):
-	for reservation in reservations:
-		if reservation["reservationId"] == reservationId:
-			print(type(json.dumps(reservation)))
-			return str(json.dumps(reservation))
-	return None
+    print("getReservation")
+    for reservation in reservations:
+        if reservation["reservationId"] == reservationId:
+            print(type(json.dumps(reservation)))
+            return str(json.dumps(reservation))
+    return None
 
 # adds a reservation to the list of reservations
 def addReservation(request):

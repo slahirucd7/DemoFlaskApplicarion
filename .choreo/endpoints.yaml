@@ -16,6 +16,10 @@ endpoints:
   # +optional Context (base path) of the API that is exposed via this endpoint.
   # This is mandatory if the endpoint type is set to REST or GraphQL.
   context: /rs
+  schemaFilePath: openapi.yaml
+
+
+
 # - name: Reservations
 #   # +required Numeric port value that gets exposed via this endpoint
 #   port: 5000

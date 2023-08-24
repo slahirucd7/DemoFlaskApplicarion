@@ -39,7 +39,7 @@ paths:
       summary: Get reservation by ID
       operationId: GetReservationById
       parameters:
-        - name: id
+        - name: reservationId
           in: path
           description: id of reservation to return
           required: true
@@ -61,7 +61,7 @@ paths:
       description: Deletes a reservation based on the id supplied
       operationId: DeleteReservationById
       parameters:
-        - name: id
+        - name: reservationId
           in: path
           description: id of reservation to delete
           required: true
@@ -79,7 +79,7 @@ paths:
       description: Updates the status of the reservation based on the id supplied
       operationId: UpdateReservationById
       parameters:
-        - name: id
+        - name: reservationId
           in: path
           description: id of reservation to update
           required: true

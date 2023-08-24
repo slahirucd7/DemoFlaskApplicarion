@@ -23,7 +23,7 @@ reservations = [
 ]
 
 # route relevant to the reservation management
-@app.route('/reservation/<reservationId>', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@app.route('/rs/reservation/<int:reservationId>', methods=['GET', 'POST', 'PUT', 'DELETE'])
 def reservation_management(reservationId):
     if request.method == "GET":
         return str("Your reservation details: " + getReservation(reservationId))
@@ -35,12 +35,12 @@ def reservation_management(reservationId):
         return "Reservation deleted: " + deleteReservation(reservationId)
 
 # route relevant to the hello world
-@app.route('/', methods=['GET'])
+@app.route('/rs/', methods=['GET'])
 def hello_world():
     return "Hello World!"
 
 # route relevant to get all reservations
-@app.route('/reservations', methods=['GET'])
+@app.route('/rs/reservations', methods=['GET'])
 def get_reservations():
     return str(json.dumps(reservations))
 
@@ -84,4 +84,4 @@ def updateReservation(reservationId, request):
     return reservationId
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True)
+    app.run()

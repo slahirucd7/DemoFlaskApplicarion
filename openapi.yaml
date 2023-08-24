@@ -14,8 +14,8 @@ externalDocs:
 servers:
   - url: http://localhost:5000
 tags:
-  - name: books
-    description: In-memory book list cache API
+  - name: reservations
+    description: In-memory reservations list cache API
 paths:
   /reservations:
     summary: List all reservations

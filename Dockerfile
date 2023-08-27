@@ -9,10 +9,10 @@ RUN pip3 install -r requirements.txt
 
 COPY . .
 RUN ls
-ENV port=9000
+ENV username=45000
 # Create a new user with UID 10016
-RUN addgroup -g 10016 choreo && \
-    adduser  --disabled-password  --no-create-home --uid 10016 --ingroup choreo choreouser
-USER 10016
-EXPOSE $port
+RUN addgroup -g $username choreo && \
+    adduser  --disabled-password  --no-create-home --uid $username --ingroup choreo choreouser
+USER $username
+EXPOSE 5000
 CMD [ "flask", "run", "--host=0.0.0.0"]

@@ -1,26 +1,12 @@
 import json
+import ast
 from flask import Flask, request
 from types import SimpleNamespace
 app = Flask(__name__)
 
 # defines initial reservations
-reservations = [ 
-	{
-		"reservationCreator" : "John Doe",
-		"reservationId" : "1234",
-		"contact" : "011-123-4567",
-	},
-	{
-		"reservationCreator" : "Jane Doe",
-		"reservationId" : "5678",
-		"contact" : "011-123-4562",
-	},
-	{
-		"reservationCreator" : "John Smith",
-		"reservationId" : "9012",
-		"contact" : "011-123-4523",
-	}
-]
+with open('data.txt') as f:
+    reservations = ast.literal_eval(f.read())
 
 # route relevant to the reservation management
 @app.route('/rs/reservation/<reservationId>', methods=['GET', 'POST', 'PUT', 'DELETE'])

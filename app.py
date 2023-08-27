@@ -35,7 +35,7 @@ def reservation_management(reservationId):
         return "Reservation deleted: " + deleteReservation(reservationId)
 
 # route relevant to the hello world
-@app.route('/rs/healthChec', methods=['GET'])
+@app.route('/rs/healthCheck', methods=['GET'])
 def health_check():
     return "Hello, Welcome to the simple reservation management app!"
 

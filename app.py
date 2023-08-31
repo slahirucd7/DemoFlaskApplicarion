@@ -11,14 +11,17 @@ with open('data.txt') as f:
 # route relevant to the reservation management
 @app.route('/rs/reservation/<reservationId>', methods=['GET', 'POST', 'PUT', 'DELETE'])
 def reservation_management(reservationId):
-    if request.method == "GET":
-        return str("Your reservation details: " + getReservation(reservationId))
-    elif request.method == "POST":
-        return str("Your added reservation details: " + addReservation(request))
-    elif request.method == "PUT":
-        return "Reservation updated: " + updateReservation(reservationId, request) ;
-    elif request.method == "DELETE":
-        return "Reservation deleted: " + deleteReservation(reservationId)
+    try:
+        if request.method == "GET":
+            return str("Your reservation details: " + getReservation(reservationId))
+        elif request.method == "POST":
+            return str("Your added reservation details: " + addReservation(request))
+        elif request.method == "PUT":
+            return "Reservation updated: " + updateReservation(reservationId, request) ;
+        elif request.method == "DELETE":
+            return "Reservation deleted: " + deleteReservation(reservationId)
+    except:
+         return "Cannot handle the given reservation ID"
 
 # route relevant to the hello world
 @app.route('/rs/healthCheck', methods=['GET'])
